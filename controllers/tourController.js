@@ -4,6 +4,29 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
+exports.checkBody = (req, res, next) => {
+  if (!req.body.name || !req.body.price) {
+    return res.status(400).send({
+      status: "fail",
+      message: "Missing name or price",
+    });
+  }
+  next();
+};
+
+// this middleware run if params has an ID, if it doesnt then this doesnt run
+// we are using this to check if the id is valid before it runs deleteTour & updateTour
+exports.checkID = (req, res, next, val) => {
+  console.log("Tour is ", +val);
+  if (req.params.id * 1 > tours.length) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Invalid ID",
+    });
+  }
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: "success",
@@ -53,12 +76,12 @@ exports.createTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  if (req.params.id * 1 > tours.length) {
-    return res.status(404).json({
-      status: "fail",
-      message: "Invalid ID",
-    });
-  }
+  // if (req.params.id * 1 > tours.length) {
+  //   return res.status(404).json({
+  //     status: "fail",
+  //     message: "Invalid ID",
+  //   });
+  // }
 
   res.status(200).json({
     status: "success",
@@ -69,12 +92,12 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
-  if (req.params.id * 1 > tours.length) {
-    return res.status(404).json({
-      status: "fail",
-      message: "Invalid ID",
-    });
-  }
+  // if (req.params.id * 1 > tours.length) {
+  //   return res.status(404).json({
+  //     status: "fail",
+  //     message: "Invalid ID",
+  //   });
+  // }
 
   res.status(204).json({
     status: "success",

@@ -5,9 +5,12 @@ const router = express.Router();
 
 // 2) ROUTES HANDLERS
 
+// this runs only when params includes an ID
+router.param("id", tourController.checkID);
+
 router.get("/", tourController.getAllTours);
 router.get("/:id", tourController.getTour);
-router.post("/", tourController.createTour);
+router.post("/", tourController.checkBody, tourController.createTour);
 router.patch("/:id", tourController.updateTour);
 router.delete("/:id", tourController.deleteTour);
 
