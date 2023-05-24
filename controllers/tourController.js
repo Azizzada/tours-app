@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require('fs');
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
@@ -7,8 +7,8 @@ const tours = JSON.parse(
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
     return res.status(400).send({
-      status: "fail",
-      message: "Missing name or price",
+      status: 'fail',
+      message: 'Missing name or price',
     });
   }
   next();
@@ -17,11 +17,11 @@ exports.checkBody = (req, res, next) => {
 // this middleware run if params has an ID, if it doesnt then this doesnt run
 // we are using this to check if the id is valid before it runs deleteTour & updateTour
 exports.checkID = (req, res, next, val) => {
-  console.log("Tour is ", +val);
+  console.log('Tour is ', +val);
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
-      status: "fail",
-      message: "Invalid ID",
+      status: 'fail',
+      message: 'Invalid ID',
     });
   }
   next();
@@ -29,7 +29,7 @@ exports.checkID = (req, res, next, val) => {
 
 exports.getAllTours = (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
     results: tours.length,
     data: {
       tours: tours,
@@ -43,11 +43,11 @@ exports.getTour = (req, res) => {
   const tour = tours.find((element) => element.id === id);
 
   if (!tour) {
-    return res.status(400).send("doesnt exist");
+    return res.status(400).send('doesnt exist');
   }
 
   res.status(200).json({
-    status: "success",
+    status: 'success',
     // results: tours.length,
     data: {
       tour,
@@ -65,7 +65,7 @@ exports.createTour = (req, res) => {
     JSON.stringify(tours),
     (err) => {
       res.status(201).json({
-        status: "success",
+        status: 'success',
         results: tours.length,
         data: {
           tour: newTour,
@@ -84,9 +84,9 @@ exports.updateTour = (req, res) => {
   // }
 
   res.status(200).json({
-    status: "success",
+    status: 'success',
     data: {
-      tour: "<Updated tour here...>",
+      tour: '<Updated tour here...>',
     },
   });
 };
@@ -100,7 +100,7 @@ exports.deleteTour = (req, res) => {
   // }
 
   res.status(204).json({
-    status: "success",
+    status: 'success',
     data: null,
   });
 };
