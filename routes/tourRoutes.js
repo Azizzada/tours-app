@@ -7,6 +7,14 @@ const router = express.Router();
 
 // this runs only when params includes an ID
 // router.param("id", tourController.checkID);
+router.get(
+  '/top-5-cheap',
+  tourController.aliasTopTours,
+  tourController.getAllTours
+);
+
+router.get('/tour-stats', tourController.getTourStats);
+router.get('/monthly-plan/:year', tourController.getMonthlyPlan);
 
 router.get('/', tourController.getAllTours);
 router.get('/:id', tourController.getTour);
