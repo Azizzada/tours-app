@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+// ANY BUG THATS NOT CAUGHT ELSEWHERE IS CALLED UNCAUGHT EXEPTIONS
+process.on('uncaughtException', (err) => {
+  console.log('UNCAUGHT EXCEPTION 💥');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 dotenv.config({ path: './config/dev.env' });
 const app = require('./app');
 
@@ -11,6 +18,16 @@ mongoose.connect(DB).then(() => {
 });
 
 const port = process.env.PORT;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+// WE CAN CATCH ERROR FROM DATABASE HERE OR ANY OTHER ERROR AT LAST - ALSO CALLED SAFETY NET
+// each time there is an UNHANDLED REJECTION/PROMISSES we can use PROCESS.on to capture it
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+  // before shuting down anything we first neet to shutdown the server then shitdown all the processes
+  server.close(() => {
+    process.exit(1);
+  });
 });
