@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon server.js"
+    "dev": "env-cmd -f ./config/dev.env nodemon server.js",
+    "debug": "ndb server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,8 @@
     "express": "^4.18.2",
     "mongoose": "^7.2.0",
     "morgan": "^1.10.0",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

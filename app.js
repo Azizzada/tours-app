@@ -12,15 +12,19 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log('hello from middleware');
-  next();
-});
-
 // 3) ROUTES
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+
+// this is for Error handling. this should always be at the last after all the routes so that if the url is not found
+// anywhere else it will eventually trigger this and this will show an the below error.
+app.all('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'fail',
+    message: `Can't find ${req.originalUrl} on this server!`,
+  });
+});
 
 // 4) START THE SERVER
 
