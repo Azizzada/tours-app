@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const userschema = new mongoose.Schema({
   name: {
@@ -15,10 +16,16 @@ const userschema = new mongoose.Schema({
     validate: [validator.isEmail, 'Please provide a valid email'],
   },
   photo: String,
+  role: {
+    type: String,
+    enum: ['user', 'guide', 'lead-guide', 'admin'],
+    default: 'user',
+  },
   password: {
     type: String,
     required: [true, 'Please provide a password'],
     minlength: 8,
+    select: false,
   },
   passwordConfirm: {
     type: String,
@@ -31,6 +38,7 @@ const userschema = new mongoose.Schema({
       message: 'Password are not the same',
     },
   },
+  passwordChangedAt: Date,
 });
 
 userschema.pre('save', async function (next) {
@@ -46,6 +54,28 @@ userschema.pre('save', async function (next) {
 
   next();
 });
+
+// Instance Method
+// because password Select is false we dont have access to this.password so thats why we are passing userPassword
+userschema.methods.correctPassword = async function (
+  typedPassword,
+  userPassword
+) {
+  return await bcrypt.compare(typedPassword, userPassword);
+};
+
+userschema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    return JWTTimestamp < changedTimestamp;
+  }
+
+  // False means NOT changes
+  return false;
+};
 
 const User = mongoose.model('User', userschema);
 

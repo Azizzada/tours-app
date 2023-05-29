@@ -19,6 +19,14 @@ const handleValidationErrorMongoDB = (error) => {
   return new AppError(message, 400);
 };
 
+const handleJWTError = (error) => {
+  return new AppError('Invalid authentication. Please log in again!', 401);
+};
+
+const handleJWTExpiredError = (error) => {
+  return new AppError('Your session has expired! Please log in again!', 401);
+};
+
 sendErrorDevelopment = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -82,6 +90,14 @@ module.exports = (err, req, res, next) => {
     }
     if (error.name === 'ValidationError') {
       error = handleValidationErrorMongoDB(error);
+      return sendErrorProductionOperationalFalse(error, res);
+    }
+    if (error.name === 'JsonWebTokenError') {
+      error = handleJWTError(error);
+      return sendErrorProductionOperationalFalse(error, res);
+    }
+    if (error.name === 'TokenExpiredError') {
+      error = handleJWTExpiredError(error);
       return sendErrorProductionOperationalFalse(error, res);
     }
 

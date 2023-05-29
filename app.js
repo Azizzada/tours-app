@@ -14,6 +14,10 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  // console.log(req.headers);
+  next();
+});
 // 3) ROUTES
 
 app.use('/api/v1/tours', tourRouter);
