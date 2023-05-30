@@ -58,6 +58,14 @@ userschema.pre('save', async function (next) {
   next();
 });
 
+userschema.pre('save', function (next) {
+  // it doesnt do anything if passoword is not modified or the document is newly created.
+  if (!this.isModified('password') || this.isNew) return next();
+
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
 // Instance Method
 // because password Select is false we dont have access to this.password so thats why we are passing userPassword
 userschema.methods.correctPassword = async function (
