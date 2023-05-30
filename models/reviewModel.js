@@ -16,11 +16,15 @@ const reviewSchema = new mongoose.Schema(
       default: Date.now,
     },
     tour: {
+      // to add reference to Tour model
+      // BUT to give REF to review models we must create VIRTUAL ref in USER model
       type: mongoose.Schema.ObjectId,
       ref: 'Tour',
       required: [true, 'Review must belong to a tour'],
     },
     user: {
+      // to add reference to Tour model
+      // BUT to give REF to review models we must create VIRTUAL ref in USER model
       type: mongoose.Schema.ObjectId,
       ref: 'User',
       required: [true, 'Review must belong to a user'],
@@ -32,6 +36,19 @@ const reviewSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+// we are defining what to show with the review. in this case, we want to show the user who wrote review and the tour it belongs to.
+reviewSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'user',
+    select: 'name photo',
+  });
+  // this.populate({
+  //   path: 'tour',
+  //   select: 'name',
+  // });
+  next();
+});
 
 const Review = mongoose.model('Review', reviewSchema);
 

@@ -121,6 +121,17 @@ tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
+// Virtual populate of REVIEW MODEL that has reference to TOUR MODEL, this is one of the way to show the review data in Tours.
+// we can also use the type and ref method in schema but that will create too many ids in the schema which will cause problem.
+tourSchema.virtual('reviews', {
+  // model which has a refernce with this one
+  ref: 'Review',
+  // is the actual name we have used in the schema as field to make the reference
+  foreignField: 'tour',
+  // what created the relationship reference between review and tour? answer: _id
+  localField: '_id',
+});
+
 // DOCUMENT MIDDLEWARE: runs before save() and create() only
 // THIS refer to document we just send that is not saved yet. this is why its called document middleware
 tourSchema.pre('save', function (next) {
