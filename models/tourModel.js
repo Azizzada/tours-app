@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
-const validator = require('validator');
+// const User = require('./userModel');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -77,6 +77,37 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    startLocation: {
+      // GeoJSON is specialized type data that is used for locations
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          enum: ['Point'],
+        },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    // referencing / normalizing the guides to user
+    guides: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     // each time the data is outputed as JSON we want to include our VIRTUAL property in it... like the one above...durationWeeks
@@ -98,6 +129,25 @@ tourSchema.pre('save', function (next) {
   next();
 });
 
+// populate means fill out guides reference array with actual user data - as the guides field in tour model is
+// just a reference and this will actualy help to populate the data.
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    select: '-__v -passwordChangedAt',
+  });
+
+  next();
+});
+
+// if we wanted to use embadding method to add guides into tours model
+// tourSchema.pre('save', async function (next) {
+//   // bacause out map methos is using async therefore it will return promise so we need to await Promise.all(guidesPromises) to get the data
+//   const guidesPromises = this.guides.map(async (id) => await User.findById(id));
+//   this.guides = await Promise.all(guidesPromises);
+
+//   next();
+// });
 // this is a POST middleware
 // tourSchema.post('save', function (doc, next) {
 //   console.log(doc);
