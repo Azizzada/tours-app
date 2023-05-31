@@ -24,6 +24,22 @@ exports.getAllUsers = factory.getAll(User); //REFACTORED CODE => CAN COMMENT THI
 //   });
 // });
 
+exports.getMe = catchAsync(async (req, res, next) => {
+  // we are going to get req.params.id from protect middleware and we are going to use it to get users id.
+  // req.params.id = req.user.id;
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    return next(new AppError('No user found with that ID', 404));
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data: user,
+    },
+  });
+});
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1)Create error if user POSTs password data
   if (req.body.password || req.body.passwordConfirm) {
