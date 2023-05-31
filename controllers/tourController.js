@@ -12,15 +12,15 @@ exports.aliasTopTours = (req, res, next) => {
   next();
 };
 
-exports.checkBody = (req, res, next) => {
-  if (!req.body.name || !req.body.price) {
-    return res.status(400).send({
-      status: 'fail',
-      message: 'Missing name or price',
-    });
-  }
-  next();
-};
+// exports.checkBody = (req, res, next) => {
+//   if (!req.body.name || !req.body.price) {
+//     return res.status(400).send({
+//       status: 'fail',
+//       message: 'Missing name or price',
+//     });
+//   }
+//   next();
+// };
 
 exports.getAllTours = factory.getAll(Tour); //REFACTORED CODE => CAN COMMENT THIS AND USE BELOW AS WELL
 // we have removed all our try and catch block and used catchAsync instate to manage errors

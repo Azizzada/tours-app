@@ -7,15 +7,25 @@ const reviewController = require('./../controllers/reviewController');
 // access to other router we need to merge the parameters.
 const router = express.Router({ mergeParams: true });
 
-router.get('/', reviewController.getAllReviews);
+router.get('/', authController.protect, reviewController.getAllReviews);
 router.post(
   '/',
   authController.protect,
   authController.restrictTo('user'),
   reviewController.createReview
 );
-router.get('/:id', reviewController.getReview);
-router.patch('/:id', reviewController.updateReview);
-router.delete('/:id', reviewController.deleteReview);
+router.get('/:id', authController.protect, reviewController.getReview);
+router.patch(
+  '/:id',
+  authController.protect,
+  authController.restrictTo('user', 'admin'),
+  reviewController.updateReview
+);
+router.delete(
+  '/:id',
+  authController.protect,
+  authController.restrictTo('user', 'admin'),
+  reviewController.deleteReview
+);
 
 module.exports = router;
