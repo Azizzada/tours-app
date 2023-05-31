@@ -35,6 +35,7 @@ const tourSchema = new mongoose.Schema(
       default: 4.5,
       min: [1, 'Rating must be above 1.0'],
       max: [5, 'Rating must be below 5.0'],
+      set: (val) => Math.round(val * 10) / 10, // 4.666666, 46.6666, 47, 4.7
     },
     ratingsQuantity: {
       type: Number,
@@ -116,6 +117,16 @@ const tourSchema = new mongoose.Schema(
   }
 );
 
+// SINGLE INDEX
+// this will create index for price and it will result in faster search for this item as mongoDB
+// will not search the entire price objects but only those we specify
+// tourSchema.index({ price: 1 });
+
+// COMPOUNT INDEX
+tourSchema.index({ price: 1, ratingsAverage: -1 });
+tourSchema.index({ slug: 1 });
+tourSchema.index({ startLocation: '2dsphere' });
+
 //Creating virtual property: we dont need additional fields all time, in this case converting days to week.
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
@@ -174,15 +185,16 @@ tourSchema.pre(/^find/, function (next) {
   next();
 });
 
+// We removed this because if was interfering with getDistances method in Tour controller
 // AGGREGATION MIDDLEWARE:
-tourSchema.pre('aggregate', function (next) {
-  // in this case this.pipeline refers to all the aggregates we set for the two routes.
-  // here we dont want to show SECRET TOUR on aggregates as well.
-  this.pipeline().unshift({
-    $match: { secretTour: { $ne: true } },
-  });
-  next();
-});
+// tourSchema.pre('aggregate', function (next) {
+//   // in this case this.pipeline refers to all the aggregates we set for the two routes.
+//   // here we dont want to show SECRET TOUR on aggregates as well.
+//   this.pipeline().unshift({
+//     $match: { secretTour: { $ne: true } },
+//   });
+//   next();
+// });
 
 const Tour = mongoose.model('Tour', tourSchema);
 
