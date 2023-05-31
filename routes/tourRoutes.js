@@ -1,10 +1,16 @@
 const express = require('express');
 const tourController = require('../controllers/tourController');
 const authController = require('./../controllers/authController');
+const reviewRouter = require('./../routes/reviewRoutes');
 
 const router = express.Router();
 
-// 2) ROUTES HANDLERS
+// POST /tour/234sss/reviews
+// GET /tour/234sss/reviews
+
+// MOUNTING ROUTERS - IT REQUIRES MERGE PARAMS
+// so in reviewRoutes we neet to do this ===>>>>> const router = express.Router({ mergeParams: true });
+router.use('/:tourId/reviews', reviewRouter);
 
 // this runs only when params includes an ID
 // router.param("id", tourController.checkID);
