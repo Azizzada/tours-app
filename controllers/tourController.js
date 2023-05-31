@@ -22,53 +22,56 @@ exports.checkBody = (req, res, next) => {
   next();
 };
 
+exports.getAllTours = factory.getAll(Tour); //REFACTORED CODE => CAN COMMENT THIS AND USE BELOW AS WELL
 // we have removed all our try and catch block and used catchAsync instate to manage errors
-exports.getAllTours = catchAsync(async (req, res, next) => {
-  // execute query
-  const features = new APIFeatures(Tour.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const tours = await features.query;
+// exports.getAllTours = catchAsync(async (req, res, next) => {
+//   // execute query
+//   const features = new APIFeatures(Tour.find(), req.query)
+//     .filter()
+//     .sort()
+//     .limitFields()
+//     .paginate();
+//   const tours = await features.query;
 
-  res.status(200).json({
-    status: 'success',
-    results: tours.length,
-    data: {
-      tours,
-    },
-  });
-});
+//   res.status(200).json({
+//     status: 'success',
+//     results: tours.length,
+//     data: {
+//       tours,
+//     },
+//   });
+// });
 
-exports.getTour = catchAsync(async (req, res, next) => {
-  const tour = await Tour.findById(req.params.id).populate('reviews');
+exports.getTour = factory.getOne(Tour, { path: 'reviews' }); //REFACTORED CODE => CAN COMMENT THIS AND USE BELOW AS WELL
+// exports.getTour = catchAsync(async (req, res, next) => {
+//   const tour = await Tour.findById(req.params.id).populate(path: 'reviews');
 
-  if (!tour) {
-    return next(new AppError('No tour found with that ID', 404));
-  }
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tour,
-    },
-  });
-});
+//   if (!tour) {
+//     return next(new AppError('No tour found with that ID', 404));
+//   }
+//   res.status(200).json({
+//     status: 'success',
+//     data: {
+//       tour,
+//     },
+//   });
+// });
 
 // catchAsync is a function that will catch the error and if the error is specified it will
 // give us the message of that error if not it will use the or block specified in error.js
-exports.createTour = catchAsync(async (req, res, next) => {
-  const newTour = await Tour.create(req.body);
+exports.createTour = factory.createOne(Tour); //REFACTORED CODE => CAN COMMENT THIS AND USE BELOW AS WELL
+// exports.createTour = catchAsync(async (req, res, next) => {
+//   const newTour = await Tour.create(req.body);
 
-  res.status(201).send({
-    status: 'success',
-    data: {
-      tour: newTour,
-    },
-  });
-});
+//   res.status(201).send({
+//     status: 'success',
+//     data: {
+//       tour: newTour,
+//     },
+//   });
+// });
 
-exports.updateTour = factory.updateOne(Tour);
+exports.updateTour = factory.updateOne(Tour); //REFACTORED CODE => CAN COMMENT THIS AND USE BELOW AS WELL
 // exports.updateTour = catchAsync(async (req, res, next) => {
 //   const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
 //     new: true,
@@ -87,7 +90,7 @@ exports.updateTour = factory.updateOne(Tour);
 //   });
 // });
 
-exports.deleteTour = factory.deleteOne(Tour);
+exports.deleteTour = factory.deleteOne(Tour); //REFACTORED CODE => CAN COMMENT THIS AND USE BELOW AS WELL
 // exports.deleteTour = catchAsync(async (req, res, next) => {
 //   const tour = await Tour.findByIdAndDelete(req.params.id);
 
