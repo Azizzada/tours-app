@@ -27,31 +27,60 @@ const handleJWTExpiredError = (error) => {
   return new AppError('Your session has expired! Please log in again!', 401);
 };
 
-sendErrorDevelopment = (err, res) => {
-  res.status(err.statusCode).json({
-    status: err.status,
-    error: err,
-    message: err.message,
-    stack: err.stack,
-  });
-};
-
-sendErrorProductionOperationalTrue = (err, res) => {
-  // Operational, trusted error: send mesage to client
-  if (err.isOperational) {
+sendErrorDevelopment = (err, req, res) => {
+  // API
+  if (req.originalUrl.startsWith('/api')) {
     res.status(err.statusCode).json({
       status: err.status,
+      error: err,
       message: err.message,
+      stack: err.stack,
     });
-    // programming or other unknows error: we dont leak error details to client
   } else {
-    // 1) Log error
-    console.log('ERROR 💥', err);
-    // 1) Send generic message
-    res.status(500).json({
-      status: 'error',
-      message: 'Something went wrong!',
+    // RENDERED WEBSITE
+    res.status(err.statusCode).render('error', {
+      title: 'Something went wrong!',
+      msg: err.message,
     });
+  }
+};
+
+sendErrorProductionOperationalTrue = (err, req, res) => {
+  // A) API
+  if (req.originalUrl.startsWith('/api')) {
+    // Operational, trusted error: send mesage to client
+    if (err.isOperational) {
+      res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
+      });
+      // programming or other unknows error: we dont leak error details to client
+    } else {
+      // 1) Log error
+      console.log('ERROR 💥', err);
+      // 1) Send generic message
+      res.status(500).json({
+        status: 'error',
+        message: 'Something went wrong!',
+      });
+    }
+  } else {
+    // B) RENDERED WEBSITE
+    if (err.isOperational) {
+      res.status(err.statusCode).render('error', {
+        title: 'Something went wrong!',
+        msg: err.message,
+      });
+      // programming or other unknows error: we dont leak error details to client
+    } else {
+      // 1) Log error
+      console.log('ERROR 💥', err);
+      // 1) Send generic message
+      res.status(err.statusCode).render('error', {
+        title: 'Something went wrong!',
+        msg: 'Please try again later.',
+      });
+    }
   }
 };
 
@@ -73,7 +102,7 @@ module.exports = (err, req, res, next) => {
   err.status = err.status || 'error'; // means if there is no status then the status is error
 
   if (process.env.NODE_ENV === 'development') {
-    sendErrorDevelopment(err, res);
+    sendErrorDevelopment(err, req, res);
   } else if (process.env.NODE_ENV === 'production') {
     // in order to handle mongoose errors which are not user friedly we will need to change the structure of those error so
     // that is why we are creating a variable from the err and we are going to make changes to it. they come from validator from mongoose and mongo
@@ -101,6 +130,6 @@ module.exports = (err, req, res, next) => {
       return sendErrorProductionOperationalFalse(error, res);
     }
 
-    sendErrorProductionOperationalTrue(err, res); //this will handle isOperational and other errors EXECPT MONGOOSE ERROR which is handled above
+    sendErrorProductionOperationalTrue(err, req, res); //this will handle isOperational and other errors EXECPT MONGOOSE ERROR which is handled above
   }
 };
