@@ -4,6 +4,51 @@ const APIFeatures = require('../utils/apifeatures');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
 const factory = require('./../controllers/handlerFactory');
+const multer = require('multer');
+const sharp = require('sharp');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only image.', 400), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+// if there is multiple with the same name
+// upload.array('images', 5);
+exports.uploadTourImages = upload.fields([
+  { name: 'imageCover', maxCount: 1 },
+  { name: 'images', maxCount: 3 },
+]);
+
+exports.resizeTourImages = catchAsync(async (req, res, next) => {
+  // console.log(req.files);
+
+  if (!req.files.imageCover || !req.files.images) return next();
+
+  // req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+
+  // 1) Cover image
+  const imageCoverFilename = `tour-${req.params.id}-${Date.now()}-cover.jpeg`;
+  await sharp(req.files.imageCover[0].buffer)
+    .resize(2000, 1333)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/tours/${imageCoverFilename}`);
+  req.body.imageCover = imageCoverFilename;
+
+  // 2) Images
+
+  next();
+});
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
