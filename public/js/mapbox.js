@@ -1,5 +1,6 @@
+import { key } from '../../config/mapBox';
 export const displayMap = (locations) => {
-  mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
+  mapboxgl.accessToken = key;
   const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/enayatullahazizzada/clido5mp8006301qgej355pj1', // style URL
