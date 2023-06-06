@@ -36,7 +36,7 @@ export const logout = async () => {
       });
     }
   } catch (err) {
-    console.log(err.response);
+    // console.log(err.response);
     showAlert('error', 'Error logging out! Try again.');
   }
 };
