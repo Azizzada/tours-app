@@ -56,8 +56,6 @@ block content
           +overviewbox('Participants', `${tour.maxGroupSize} people`, 'user')
           +overviewbox('Rating', `${Math.round(tour.ratingsAverage * 10) / 10} / 5`, 'star')
 
-
-
         .overview-box__group
           h2.heading-secondary.ma-bt-lg Your tour guides
 
@@ -73,7 +71,6 @@ block content
 
     .description-box
       h2.heading-secondary.ma-bt-lg= `About ${tour.name} tour`
-
       - const paragraphs = tour.description.split('\n')
       each p in paragraphs
         p.description__text= p
@@ -83,22 +80,25 @@ block content
       .picture-box
         img.picture-box__img(src=`/img/tours/${img}`, alt=`The Park Camper Tour ${index + 1}`, class=`picture-box__img--${index + 1}`)
 
-  section.section-map
-    #map(data-locations=`${JSON.stringify(tour.locations)}`)
+  //- section.section-map
+  //-   #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
   section.section-reviews
     .reviews
       each review in tour.reviews
         +reviewCard(review)
 
-
   section.section-cta
     .cta
       .cta__img.cta__img--logo
-        img(src='/img/logo-white.png', alt='Natours logo')
+        img(src='/img/logo-white.png', alt='tours logo')
       img.cta__img.cta__img--1(src=`/img/tours/${tour.images[1]}`, alt='Tour picture')
       img.cta__img.cta__img--2(src=`/img/tours/${tour.images[2]}`, alt='Tour picture')
       .cta__content
         h2.heading-secondary What are you waiting for?
         p.cta__text= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
-        button.btn.btn--green.span-all-rows Book tour now!
+
+        if user
+          button.btn.btn--green.span-all-rows#book-tour(data-tour-id=`${tour.id}`) Book tour now!
+        else
+          a.btn.btn--green.span-all-rows(href='/login') Log in to book tour
