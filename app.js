@@ -20,6 +20,8 @@ const globalErrorHandler = require('./controllers/globalErrorHandler');
 
 const app = express();
 
+// we are enabling to make this authController code work secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+app.enable('trust proxy');
 // Defining view engine
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
