@@ -80,8 +80,8 @@ block content
       .picture-box
         img.picture-box__img(src=`/img/tours/${img}`, alt=`The Park Camper Tour ${index + 1}`, class=`picture-box__img--${index + 1}`)
 
-  //- section.section-map
-  //-   #map(data-locations=`${JSON.stringify(tour.locations)}`)
+  section.section-map
+    #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
   section.section-reviews
     .reviews
