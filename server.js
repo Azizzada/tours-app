@@ -25,9 +25,18 @@ const server = app.listen(port, () => {
 // WE CAN CATCH ERROR FROM DATABASE HERE OR ANY OTHER ERROR AT LAST - ALSO CALLED SAFETY NET
 // each time there is an UNHANDLED REJECTION/PROMISSES we can use PROCESS.on to capture it
 process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
   console.log(err.name, err.message);
   // before shuting down anything we first neet to shutdown the server then shitdown all the processes
   server.close(() => {
     process.exit(1);
+  });
+});
+
+// in order to avoid 24 hrs shutdown protocol of HEROKU we need to add below code
+process.on('SIGTERM', () => {
+  console.log('👋 SIGTERM RECEIVED. Shutting down gracefully ');
+  server.close(() => {
+    console.log('💥 Process terminated!');
   });
 });
