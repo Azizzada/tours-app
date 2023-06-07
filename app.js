@@ -62,8 +62,9 @@ app.use('/api', limiter);
 // this routes is defined in STRIPE
 // reason for defining this route here: when we receive the body from stripe, it needs to ready the body
 // in raw form, as STRING and not as JSON. so therefore we need to define it before the body is converted into JSON
+
 app.post(
-  '/web-checkout',
+  '/webhook-checkout',
   express.raw({ type: 'application/json' }),
   bookingController.webhookCheckout
 );
