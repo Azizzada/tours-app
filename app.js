@@ -70,7 +70,7 @@ app.use('/api', limiter);
 // );
 
 app.post(
-  '/webhook',
+  '/webhook-checkout',
   // Stripe requires the raw body to construct the event
   express.raw({ type: 'application/json' }),
   (req, res) => {
