@@ -63,10 +63,47 @@ app.use('/api', limiter);
 // reason for defining this route here: when we receive the body from stripe, it needs to ready the body
 // in raw form, as STRING and not as JSON. so therefore we need to define it before the body is converted into JSON
 
+// app.post(
+//   '/webhook-checkout',
+//   express.raw({ type: 'application/json' }),
+//   bookingController.webhookCheckout
+// );
+
 app.post(
-  '/webhook-checkout',
+  '/webhook',
+  // Stripe requires the raw body to construct the event
   express.raw({ type: 'application/json' }),
-  bookingController.webhookCheckout
+  (req, res) => {
+    const sig = req.headers['stripe-signature'];
+
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    } catch (err) {
+      // On error, log and return the error message
+      console.log(`❌ Error message: ${err.message}`);
+      res.status(400).send(`Webhook Error: ${err.message}`);
+      return;
+    }
+
+    // Successfully constructed event
+    console.log('✅ Success:', event.id);
+
+    // Cast event data to Stripe object
+    if (event.type === 'payment_intent.succeeded') {
+      const stripeObject = event.data.object;
+      console.log(`💰 PaymentIntent status: ${stripeObject.status}`);
+    } else if (event.type === 'charge.succeeded') {
+      const charge = event.data.object;
+      console.log(`💵 Charge id: ${charge.id}`);
+    } else {
+      console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
+    }
+
+    // Return a response to acknowledge receipt of the event
+    res.json({ received: true });
+  }
 );
 
 // Body parser, reading data from the body into req.body
