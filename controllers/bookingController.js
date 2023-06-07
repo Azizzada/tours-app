@@ -47,10 +47,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     status: 'success',
     session,
   });
-  console.log(session.object);
-  console.log(session.amount_total);
-  console.log(session.customer_email);
-  console.log(session.client_reference_id);
 });
 
 // exports.createBookingCheckout = catchAsync(async (req, res, next) => {

@@ -10,9 +10,9 @@
     "ratingsQuantity": 6,
     "images": ["tour-2-1.jpg", "tour-2-2.jpg", "tour-2-3.jpg"],
     "startDates": [
-      "2021-06-19T09:00:00.000Z",
-      "2021-07-20T09:00:00.000Z",
-      "2021-08-18T09:00:00.000Z"
+      "2023-06-19T09:00:00.000Z",
+      "2023-07-20T09:00:00.000Z",
+      "2023-08-18T09:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2955",
     "name": "The Sea Explorer",
@@ -22,7 +22,7 @@
     "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a1f4e2f8fb814b56fa185"],
     "price": 497,
     "summary": "Exploring the jaw-dropping US east coast by foot and by boat",
-    "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "description": "Discover the stunning US east coast on The Sea Explorer Tour. Immerse yourself in breathtaking landscapes, from Miami's vibrant beaches to the idyllic Islamorada and West Key.\n With a medium difficulty level, this 7-day adventure by foot and boat is perfect for all nature enthusiasts. Led by expert guides, explore hidden gems and create memories that will last a lifetime. Book now and embark on a remarkable coastal exploration.",
     "imageCover": "tour-2-cover.jpg",
     "locations": [
       {
@@ -66,9 +66,9 @@
     "ratingsQuantity": 9,
     "images": ["tour-1-1.jpg", "tour-1-2.jpg", "tour-1-3.jpg"],
     "startDates": [
-      "2021-04-25T09:00:00.000Z",
-      "2021-07-20T09:00:00.000Z",
-      "2021-10-05T09:00:00.000Z"
+      "2023-07-25T09:00:00.000Z",
+      "2023-08-20T09:00:00.000Z",
+      "2023-10-05T09:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2951",
     "name": "The Forest Hiker",
@@ -82,7 +82,7 @@
     ],
     "price": 397,
     "summary": "Breathtaking hike through the Canadian Banff National Park",
-    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "description": "Embark on The Forest Hiker Tour, a breathtaking 5-day hike through Canada's Banff National Park. With a perfect rating of 5 and rave reviews from 9 participants, this easy-level adventure is ideal for nature enthusiasts.\n Led by expert guides, explore Banff, Jasper, and Glacier National Parks. Immerse yourself in the stunning Canadian wilderness and create unforgettable memories. Book now for an awe-inspiring experience.",
     "imageCover": "tour-1-cover.jpg",
     "locations": [
       {
@@ -119,9 +119,9 @@
     "ratingsQuantity": 6,
     "images": ["tour-3-1.jpg", "tour-3-2.jpg", "tour-3-3.jpg"],
     "startDates": [
-      "2022-01-05T10:00:00.000Z",
-      "2022-02-12T10:00:00.000Z",
-      "2023-01-06T10:00:00.000Z"
+      "2024-01-05T10:00:00.000Z",
+      "2024-02-12T10:00:00.000Z",
+      "2024-04-06T10:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c295a",
     "name": "The Snow Adventurer",
@@ -135,7 +135,7 @@
     ],
     "price": 997,
     "summary": "Exciting adventure in the snow with snowboarding and skiing",
-    "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!\nDolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, exercitation ullamco laboris nisi ut aliquip. Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
+    "description": "Experience The Snow Adventurer Tour, an exhilarating 4-day snow-filled adventure in Aspen, USA. With a rating of 4.5 and feedback from 6 participants, this challenging tour offers thrilling snowboarding and skiing opportunities.\n Led by knowledgeable guides, embrace the excitement of winter sports at Aspen Highlands and Beaver Creek. Book now for an unforgettable snow adventure.",
     "imageCover": "tour-3-cover.jpg",
     "locations": [
       {
@@ -165,9 +165,9 @@
     "ratingsQuantity": 7,
     "images": ["tour-5-1.jpg", "tour-5-2.jpg", "tour-5-3.jpg"],
     "startDates": [
-      "2021-08-05T09:00:00.000Z",
-      "2022-03-20T10:00:00.000Z",
-      "2022-08-12T09:00:00.000Z"
+      "2023-08-05T09:00:00.000Z",
+      "2023-10-20T10:00:00.000Z",
+      "2024-01-12T09:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2961",
     "name": "The Park Camper",
@@ -181,7 +181,7 @@
     ],
     "price": 1497,
     "summary": "Breathing in Nature in America's most spectacular National Parks",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!",
+    "description": "Embark on 'The Park Camper' tour from Las Vegas, USA, and experience America's stunning National Parks. This 10-day adventure boasts a 4.7 rating with 7 enthusiastic reviews.\n Discover Zion Canyon, Antelope Canyon, Grand Canyon, and Joshua Tree National Parks. With medium difficulty and a maximum group size of 15, it's perfect for nature lovers. Choose from various start dates, starting at $1497. Immerse yourself in nature's beauty on this unforgettable journey.",
     "imageCover": "tour-5-cover.jpg",
     "locations": [
       {
@@ -225,9 +225,9 @@
     "ratingsQuantity": 5,
     "images": ["tour-4-1.jpg", "tour-4-2.jpg", "tour-4-3.jpg"],
     "startDates": [
-      "2021-03-11T10:00:00.000Z",
-      "2021-05-02T09:00:00.000Z",
-      "2021-06-09T09:00:00.000Z"
+      "2023-09-11T10:00:00.000Z",
+      "2023-10-02T09:00:00.000Z",
+      "2023-12-09T09:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c295d",
     "name": "The City Wanderer",
@@ -237,7 +237,7 @@
     "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a201e2f8fb814b56fa186"],
     "price": 1197,
     "summary": "Living the life of Wanderlust in the US' most beatiful cities",
-    "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat lorem ipsum dolor sit amet.\nConsectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat!",
+    "description": "Embark on 'The City Wanderer' tour from NYC, USA, and explore the most beautiful cities in the US. This 9-day journey boasts a 4.6 rating with 5 satisfied travelers.\n Discover New York, Los Angeles, and San Francisco. With an easy difficulty level and a maximum group size of 20, it's perfect for city enthusiasts. Choose from multiple start dates, starting at $1197. Experience the joy of wanderlust in these vibrant destinations.",
     "imageCover": "tour-4-cover.jpg",
     "locations": [
       {
@@ -274,9 +274,9 @@
     "ratingsQuantity": 7,
     "images": ["tour-6-1.jpg", "tour-6-2.jpg", "tour-6-3.jpg"],
     "startDates": [
-      "2021-07-19T09:00:00.000Z",
-      "2021-09-06T09:00:00.000Z",
-      "2022-03-18T10:00:00.000Z"
+      "2023-07-19T09:00:00.000Z",
+      "2023-09-06T09:00:00.000Z",
+      "2023-10-18T10:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2966",
     "name": "The Sports Lover",
@@ -290,7 +290,7 @@
     ],
     "price": 2997,
     "summary": "Surfing, skating, parajumping, rock climbing and more, all in one tour",
-    "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\nVoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur!",
+    "description": "The Sports Lover is an adrenaline-packed 14-day tour that takes you on an unforgettable adventure through California, USA.\n Get ready to experience the thrill of surfing, skating, parajumping, rock climbing, and more, all in one epic journey. From the pristine shores of Point Dume Beach to the vibrant Venice Skate Park, each day is filled with exciting activities. Feel the rush as you skydive over the stunning landscapes of San Diego and conquer the exhilarating rapids of Kern River. The tour reaches its climax with a visit to the breathtaking Yosemite National Park. Join us for an action-packed tour that will leave you with memories to last a lifetime.",
     "imageCover": "tour-6-cover.jpg",
     "locations": [
       {
@@ -341,9 +341,9 @@
     "ratingsQuantity": 6,
     "images": ["tour-8-1.jpg", "tour-8-2.jpg", "tour-8-3.jpg"],
     "startDates": [
-      "2021-03-23T10:00:00.000Z",
-      "2021-10-25T09:00:00.000Z",
-      "2022-01-30T10:00:00.000Z"
+      "2023-03-23T10:00:00.000Z",
+      "2023-10-25T09:00:00.000Z",
+      "2024-01-30T10:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2970",
     "name": "The Star Gazer",
@@ -353,7 +353,7 @@
     "guides": ["5c8a21d02f8fb814b56fa189", "5c8a1f292f8fb814b56fa184"],
     "price": 2997,
     "summary": "The most remote and stunningly beautiful places for seeing the night sky",
-    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "description": "The Star Gazer is a 9-day trip that takes you to the most remote and stunningly beautiful places in Utah, USA for an unforgettable night sky experience. Immerse yourself in the mesmerizing wonders of the universe as you venture through locations like Natural Bridges National Monument, Horseshoe Bend, and Death Valley National Park.\n With a rating of 4.8 from 6 satisfied adventurers, this medium-level tour promises a truly awe-inspiring journey. Explore the depths of the cosmos and witness breathtaking starry nights like never before. Join us on 'The Star Gazer' and embark on a celestial adventure that will leave you in awe of the universe's splendor.",
     "imageCover": "tour-8-cover.jpg",
     "locations": [
       {
@@ -390,9 +390,9 @@
     "ratingsQuantity": 7,
     "images": ["tour-9-1.jpg", "tour-9-2.jpg", "tour-9-3.jpg"],
     "startDates": [
-      "2021-12-16T10:00:00.000Z",
-      "2022-01-16T10:00:00.000Z",
-      "2022-12-12T10:00:00.000Z"
+      "2023-12-16T10:00:00.000Z",
+      "2023-08-16T10:00:00.000Z",
+      "2023-11-12T10:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c2974",
     "name": "The Northern Lights",
@@ -406,7 +406,7 @@
     ],
     "price": 1497,
     "summary": "Enjoy the Northern Lights in one of the best places in the world",
-    "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!\nDolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, exercitation ullamco laboris nisi ut aliquip. Lorem ipsum dolor sit amet, consectetur adipisicing elit!",
+    "description": "Embark on an enchanting journey to witness the mesmerizing Northern Lights with 'The Northern Lights' tour in Yellowknife, Canada. Rated 4.7 by 7 explorers, this 3-day adventure offers a captivating experience.\n Immerse yourself in the beauty of Yellowknife as you witness the dancing lights in the sky. With a maximum group size of 12, this easy-level tour starts at $1497. Don't miss the opportunity to behold this natural phenomenon in one of the world's best locations. Let the Northern Lights illuminate your soul and create lifelong memories.",
     "imageCover": "tour-9-cover.jpg",
     "locations": [
       {
@@ -429,9 +429,9 @@
     "ratingsQuantity": 7,
     "images": ["tour-7-1.jpg", "tour-7-2.jpg", "tour-7-3.jpg"],
     "startDates": [
-      "2021-02-12T10:00:00.000Z",
-      "2021-04-14T09:00:00.000Z",
-      "2021-09-01T09:00:00.000Z"
+      "2023-08-12T10:00:00.000Z",
+      "2023-09-14T09:00:00.000Z",
+      "2023-11-01T09:00:00.000Z"
     ],
     "_id": "5c88fa8cf4afda39709c296c",
     "name": "The Wine Taster",
@@ -441,7 +441,7 @@
     "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a23412f8fb814b56fa18c"],
     "price": 1997,
     "summary": "Exquisite wines, scenic views, exclusive barrel tastings,  and much more",
-    "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "description": "Indulge in the ultimate wine-tasting experience with 'The Wine Taster' tour in California, USA. Rated 4.4 by 7 enthusiasts, this 5-day journey offers exquisite wines, scenic views, and exclusive barrel tastings.\n Immerse yourself in the world of winemaking as you visit renowned vineyards like Beringer Vineyards, Clos Pegase Winery & Tasting Room, and Raymond Vineyard and Cellar. With a maximum group size of 8, this easy-level tour starts at $1997. Savor the flavors, embrace the beauty, and create unforgettable memories on this wine-lover's dream excursion.",
     "imageCover": "tour-7-cover.jpg",
     "locations": [
       {
